@@ -16,6 +16,15 @@
 
 <body>
   <header>
+    <button class="hamburger" id="hamburger" aria-label="Öppna meny" aria-expanded="false" aria-controls="nav-links">
+
+      <svg class="icon-hamburger" viewBox="0 0 24 24" width="50" height="50">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" />
+      </svg>
+      <svg class="icon-close" viewBox="0 0 24 24" width="50" height="50">
+        <path d="M6 6l12 12M6 18L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      </svg>
+    </button>
     <nav>
       <ul class="topnav">
         <li><a href="/" aria-current="page">Hem</a></li>
@@ -29,23 +38,11 @@
   <main>
     <div class="hero">
       <picture>
-        <source 
-          media="(min-width: 768px)" 
-          srcset="/bilder/hero-home-desktop.webp 5290w"
-          sizes="100vw"
+        <source media="(min-width: 769px)" srcset="/bilder/hero-home-desktop.webp 5290w" sizes="100vw"
           type="image/webp">
-        <source 
-          media="(min-width: 768px)" 
-          srcset="/bilder/hero-home-desktop.jpg 5290w"
-          sizes="100vw"
-          type="image/jpg">
-        <source 
-          srcset="/bilder/hero-home-mobile.webp 4000w"
-          sizes="100vw"
-          type="image/webp">
-        <img src="/bider/hero-home-mobile.jpg" 
-          width="4000" height="3200"
-          alt="" fetchpriority="high">
+        <source media="(min-width: 769px)" srcset="/bilder/hero-home-desktop.jpg 5290w" sizes="100vw" type="image/jpg">
+        <source srcset="/bilder/hero-home-mobile.webp 4000w" sizes="100vw" type="image/webp">
+        <img src="/bilder/hero-home-mobile.jpg" width="4000" height="3200" alt="" fetchpriority="high">
       </picture>
       <h1>Frontendbaserad webbutveckling</h1>
     </div>
