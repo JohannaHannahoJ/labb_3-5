@@ -1,0 +1,28 @@
+/*Här lägger du kod som hanterar sidans utseende så som 
+grid, flexbox och containers.*/
+
+@use "base";
+
+header {
+  background-color: base.$primary-dark-color;
+  padding: 1rem 2rem;
+  
+  nav {
+    background-color: base.$primary-light-color;
+    
+    ul {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+    }
+
+
+    a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: base.$primary-pop-color;
+    font-weight: 600;
+
+    }
+  }
+}

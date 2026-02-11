@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="sv">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>labb_3-5</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/src/css/main.scss">
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul class="topnav">
+        <li><a href="/" aria-current="page">Hem</a></li>
+        <li><a href="/sass.html">Sass</a></li>
+        <li><a href="#">Meny3</a></li>
+        <li><a href="#">Meny4</a></li>
+        <li><a href="#">Meny5</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <div class="hero">
+      <picture>
+        <source 
+          media="(min-width: 768px)" 
+          srcset="/bilder/hero-home-desktop.webp 5290w"
+          sizes="100vw"
+          type="image/webp">
+        <source 
+          media="(min-width: 768px)" 
+          srcset="/bilder/hero-home-desktop.jpg 5290w"
+          sizes="100vw"
+          type="image/jpg">
+        <source 
+          srcset="/bilder/hero-home-mobile.webp 4000w"
+          sizes="100vw"
+          type="image/webp">
+        <img src="/bider/hero-home-mobile.jpg" 
+          width="4000" height="3200"
+          alt="" fetchpriority="high">
+      </picture>
+      <h1>Frontendbaserad webbutveckling</h1>
+    </div>
+    <article>
+      <h2>Laboration 3</h2>
+      <p>Det här är en uppgift från kursen frontendbaserad webbutveckling, som ges vid
+        <a href="https://www.miun.se/utbildning/program/webbutveckling/">Mittuniversitetets webbutvecklingsprogram</a>.
+      </p>
+    </article>
+  </main>
+  <footer>
+    <p>© joha2102@student.miun.se</p>
+  </footer>
+
+  <script type="module" src="/src/js/main.js"></script>
+</body>
+
+</html>
