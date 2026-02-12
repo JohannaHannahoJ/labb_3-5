@@ -2,9 +2,9 @@
 <html lang="sv">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>labb_3-5</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>labb_3-5, om sass</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +16,17 @@
 
 <body>
     <header>
-        <nav>
+        <button class="hamburger" id="hamburger" aria-label="Öppna meny" aria-expanded="false"
+            aria-controls="nav-links">
+
+            <svg class="icon-hamburger" viewBox="0 0 24 24" width="50" height="50">
+                <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" />
+            </svg>
+            <svg class="icon-close" viewBox="0 0 24 24" width="50" height="50">
+                <path d="M6 6l12 12M6 18L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+        </button>
+        <nav id="nav-links">
             <ul class="topnav">
                 <li><a href="/">Hem</a></li>
                 <li><a href="/sass.html" aria-current="page">Sass</a></li>
@@ -27,7 +37,56 @@
         </nav>
     </header>
     <main>
-        <h1>Hejsan Sass</h1>
+        <article>
+            <h1>Sass</h1>
+            <p class="ingress">
+                På den här sidan har jag testat att använda Sass (eller SCSS) för första gången.
+                Det har gått okej.</p>
+            <p>
+                Eftersom jag inte är särskilt god vän med CSS från grunden har det varit ganska tufft för mig att komma
+                igång med Sass. Det är svårt att felsöka i CSS, och ibland känns det som att den enda vägen för att få
+                sidan som man vill är att testa sig fram.
+            </P>
+            <P>
+                CSS är för mig fortfarande en form av svart låda i vissa fall.
+                När man dessutom ska addera nya funktioner och dela upp stylingen i flera dokument, samt börja tänka på
+                struktur och länkningar, blir det lätt övermäktigt.
+            </p>
+            <p>
+                Jag kan dock förstå fördelarna med Sass. Strukturen kan verkligen hjälpa en att överblicka mycket kod.
+                Att en justering av variablerna i färgschemat kan ändra utseendet på hela sidan är också roligt – även
+                om jag tror att designarbete i större sammanhang är en mer seriös process. Det kan dessutom vara väldigt
+                praktiskt om man inser att man behöver justera en nyans på en text eller liknande, kanske för att
+                uppfylla kontrastkrav eller andra riktlinjer.
+            </p>
+            <p>
+                Mitt misstag i detta projekt var nog att jag borde ha planerat upplägget lite innan jag satte igång att
+                bygga sidan. Jag har behövt backa, ångra och gå fram och tillbaka. Å andra sidan är det väl så att vara
+                nybörjare. Just nu känns startsträckan ganska lång, men någonstans måste man börja om man vill framåt.
+                Jag tror att jag kommer fortsätta tänka CSS som vanligt, men använda fördelarna med SCSS när andan
+                faller på, och alltid använda variabler för färger.
+            </p>
+            <p>
+                En stor nackdel som jag ser det just nu är att bilderna inte hänger med om man vill göra en drastisk
+                förändring av färgschemat. Kolla bara på dessa som matchar den nuvarande sidan så bra 😊.
+            </p>
+            <div class="bild-grid">
+                <figure>
+                    <picture>
+                        <source srcset="/bilder/leguan.webp" type="image/webp">
+                        <img src="/bilder/leguan.jpg" width="1200" height="676"
+                            alt="Turkos leguan aom matchar sidanr origial-färgtema">
+                    </picture>
+                </figure>
+                <figure>
+                    <picture>
+                        <source srcset="/bilder/turtle.webp" type="image/webp">
+                        <img src="/bilder/turtle.jpg" width="1200" height="676"
+                            alt="Brun sköldpadda med turkos bakgrund som matchar sidanr origial-färgtema">
+                    </picture>
+                </figure>
+            </div>
+        </article>
     </main>
     <footer>
         <p>© joha2102@student.miun.se</p>

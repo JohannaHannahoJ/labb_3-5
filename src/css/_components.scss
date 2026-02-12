@@ -1,11 +1,35 @@
-/*Här kan du lägga komponenter som kan återanvändas.
- Som till exempel knappar, länkar, formulär, 
- modaler m.m.*/
+@use "base";
+@use "sass:color";
 
- //knapp, mixin
+@mixin link-text {
+    @if base.$lightTheme {
+        color: base.$primary-pop-color;
 
- @mixin btn($size, $radius: 0) {
+        &:hover {
+            color: color.complement(base.$primary-pop-color);
+        }
+    }
 
- }
+    @else {
+        color: color.scale(base.$primary-pop-color, $lightness: 55%);
+        &:hover {
+            color: color.scale(base.$primary-pop-color, $lightness: 85%);
+        }
+    }
 
+    @media (prefers-color-scheme: dark) {
+        color: color.scale(base.$primary-pop-color, $lightness: 55%);
+        
+        &:hover {
+            color: color.scale(base.$primary-pop-color, $lightness: 85%);
+        }
+    }
 
+    @media (prefers-color-scheme: light) {
+        color: base.$primary-pop-color;
+
+        &:hover {
+            color: color.complement(base.$primary-pop-color);
+        }
+    }
+}
