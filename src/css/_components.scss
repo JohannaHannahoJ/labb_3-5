@@ -1,13 +1,20 @@
 @use "base";
 @use "sass:color";
 
- @mixin link-text {
+@mixin link-text {
     @if base.$lightTheme {
         color: base.$primary-pop-color;
-    } @else {
-        color: color.scale(base.$primary-pop-color, $lightness: 55%);
+
+        &:hover {
+            color: color.complement(base.$primary-pop-color);
+        }
     }
 
- }
+    @else {
+        color: color.scale(base.$primary-pop-color, $lightness: 55%);
+        &:hover {
+            color: color.scale(base.$primary-pop-color, $lightness: 85%);
+        }
+    }
 
-
+}
