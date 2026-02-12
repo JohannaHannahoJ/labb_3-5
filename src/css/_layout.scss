@@ -156,8 +156,13 @@ header {
 
 article {
   padding: 2rem;
+  max-width: 75ch;
+  margin: 0 auto;
 
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     padding-bottom: 1rem;
   }
 
@@ -169,14 +174,34 @@ article {
     @include components.link-text;
   }
 
-    a:visited {
+  a:visited {
     color: base.$primary-light-color;
   }
 }
 
 .ingress {
   font-weight: 600;
-  padding-bottom: 1rem; 
+  padding-bottom: 1rem;
+}
+
+.bild-grid {
+  display: block;
+
+  figure {
+    margin-bottom: 2rem;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block
+  }
+
+  @media (min-width: 769px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
 }
 
 footer {
