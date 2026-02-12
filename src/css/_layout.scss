@@ -1,11 +1,49 @@
-/*Här lägger du kod som hanterar sidans utseende så som 
-grid, flexbox och containers.*/
-
 @use "base";
+@use "components";
 @use "sass:color";
 
+%lightOrDarkHeaderFoot {
+  @if base.$lightTheme {
+    background-color: base.$primary-dark-color;
+    color: base.$primary-light-color;
+  }
+
+  @else {
+    background-color: color.scale(base.$primary-dark-color, $lightness: -20%);
+    color: base.$primary-light-color;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    background-color: color.scale(base.$primary-dark-color, $lightness: -20%);
+    color: base.$primary-light-color;
+  }
+
+  @media (prefers-color-scheme: light) {
+    background-color: base.$primary-dark-color;
+    color: base.$primary-light-color;
+  }
+}
+
+%lightOrDarkNav {
+  @if base.$lightTheme {
+    background-color: base.$primary-light-color;
+  }
+
+  @else {
+    background-color: base.$primary-dark-color;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    background-color: base.$primary-dark-color;
+  }
+
+  @media (prefers-color-scheme: light) {
+    background-color: base.$primary-light-color;
+  }
+}
+
 header {
-  background-color: base.$primary-dark-color;
+  @extend %lightOrDarkHeaderFoot;
   padding: 1rem 2rem;
   position: relative;
 
@@ -15,11 +53,11 @@ header {
 
 
   nav {
+    @extend %lightOrDarkNav;
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
-    background-color: base.$primary-light-color;
     display: none;
     z-index: 10;
   }
@@ -63,8 +101,8 @@ header {
   a {
     text-decoration: none;
     font-size: 1.2rem;
-    color: base.$primary-pop-color;
     font-weight: 600;
+    @include components.link-text;
   }
 }
 
@@ -136,26 +174,86 @@ header {
 
 article {
   padding: 2rem;
+  max-width: 75ch;
+  margin: 0 auto;
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    padding-bottom: 1rem;
+  }
+
+  p {
+    padding-bottom: 1rem;
+  }
+
+  a {
+    @include components.link-text;
+  }
+
+  a:visited {
+    @if base.$lightTheme {
+      color: base.$primary-dark-color;
+    }
+
+    @else {
+      color: base.$primary-light-color;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      color: base.$primary-light-color;
+    }
+
+    @media (prefers-color-scheme: light) {
+      color: base.$primary-dark-color;
+    }
+  }
+
+  .ingress {
+    font-weight: 600;
+    padding-bottom: 1rem;
+  }
+
+  .bild-grid {
+    display: block;
+
+    figure {
+      margin-bottom: 2rem;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block
+    }
+
+    @media (min-width: 769px) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+  }
 }
 
 footer {
-  background-color: base.$primary-dark-color;
-  color: base.$primary-light-color;
-  text-align: center;
-  padding: 2rem;
-}
+    @extend %lightOrDarkHeaderFoot;
 
-html,
-body {
-  height: 100%;
-}
+    text-align: center;
+    padding: 2rem;
+  }
 
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
+  html,
+  body {
+    height: 100%;
+  }
 
-main {
-  flex: 1;
-}
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  main {
+    flex: 1;
+  }
