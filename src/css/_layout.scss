@@ -4,8 +4,30 @@ grid, flexbox och containers.*/
 @use "base";
 @use "sass:color";
 
+%lightOrDarkHeaderFoot {
+  @if base.$lightTheme {
+    background-color: base.$primary-dark-color;
+    color: base.$primary-light-color;
+  }
+
+  @else {
+    background-color: color.scale(base.$primary-dark-color, $lightness: -20%);
+    color: base.$primary-light-color;
+  }
+}
+
+%lightOrDarkNav {
+  @if base.$lightTheme {
+    background-color: base.$primary-light-color;
+  }
+
+  @else {
+    background-color: base.$primary-dark-color;
+  }
+}
+
 header {
-  background-color: base.$primary-dark-color;
+  @extend %lightOrDarkHeaderFoot;
   padding: 1rem 2rem;
   position: relative;
 
@@ -15,11 +37,11 @@ header {
 
 
   nav {
+    @extend %lightOrDarkNav;
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
-    background-color: base.$primary-light-color;
     display: none;
     z-index: 10;
   }
@@ -139,8 +161,8 @@ article {
 }
 
 footer {
-  background-color: base.$primary-dark-color;
-  color: base.$primary-light-color;
+  @extend %lightOrDarkHeaderFoot;
+
   text-align: center;
   padding: 2rem;
 }

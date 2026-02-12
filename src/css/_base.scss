@@ -1,8 +1,4 @@
-/* En partial för att lägga dina variabler
- och mixins och annat som du kan behöva 
- importera in senare i din kod för att  slippa 
- redundans. Det kan vara färgkoder  i variabler, 
- styling på texter, textstorlekar osv.*/
+@use "sass:color";
 
 $fontfamilj: "Poppins", sans-serif;
 
@@ -10,10 +6,24 @@ $primary-light-color: #F3E5D8;
 $primary-dark-color: #4E342E;
 $primary-pop-color: #26A69A;
 
+$lightTheme: false;
+
+%lightOrDark {
+  @if $lightTheme {
+    background-color: $primary-light-color;
+    color: $primary-dark-color;
+  }
+
+  @else {
+    background-color:$primary-dark-color;
+    color: $primary-light-color;
+  }
+}
+
 body {
   font-family: $fontfamilj;
   font-weight: 400;
-  background-color: $primary-light-color;
-  color: $primary-dark-color;
   line-height: 1.6;
+
+  @extend %lightOrDark;
 }
