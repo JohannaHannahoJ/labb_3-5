@@ -160,6 +160,10 @@ article {
   a {
     @include components.link-text;
   }
+
+    a:visited {
+    color: base.$primary-light-color;
+  }
 }
 
 footer {
