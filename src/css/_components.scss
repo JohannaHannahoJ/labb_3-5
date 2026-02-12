@@ -5,7 +5,7 @@
     @if base.$lightTheme {
         color: base.$primary-pop-color;
     } @else {
-        color: color.scale(base.$primary-pop-color, $lightness: 15%);
+        color: color.scale(base.$primary-pop-color, $lightness: 55%);
     }
 
  }

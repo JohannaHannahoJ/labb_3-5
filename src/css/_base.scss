@@ -6,7 +6,7 @@ $primary-light-color: #F3E5D8;
 $primary-dark-color: #4E342E;
 $primary-pop-color: #26A69A;
 
-$lightTheme: true;
+$lightTheme: false;
 
 %lightOrDark {
   @if $lightTheme {
