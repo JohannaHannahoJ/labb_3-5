@@ -1,10 +1,12 @@
-/*Här kan du lägga komponenter som kan återanvändas.
- Som till exempel knappar, länkar, formulär, 
- modaler m.m.*/
+@use "base";
+@use "sass:color";
 
- //knapp, mixin
-
- @mixin btn($size, $radius: 0) {
+ @mixin link-text {
+    @if base.$lightTheme {
+        color: base.$primary-pop-color;
+    } @else {
+        color: color.scale(base.$primary-pop-color, $lightness: 15%);
+    }
 
  }
 

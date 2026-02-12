@@ -1,7 +1,5 @@
-/*Här lägger du kod som hanterar sidans utseende så som 
-grid, flexbox och containers.*/
-
 @use "base";
+@use "components";
 @use "sass:color";
 
 %lightOrDarkHeaderFoot {
@@ -158,6 +156,10 @@ header {
 
 article {
   padding: 2rem;
+
+  a {
+    @include components.link-text;
+  }
 }
 
 footer {
