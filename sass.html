@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>labb_3-5</title>
+    <title>labb_3-5, om sass</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,6 +16,16 @@
 
 <body>
     <header>
+        <button class="hamburger" id="hamburger" aria-label="Öppna meny" aria-expanded="false"
+            aria-controls="nav-links">
+
+            <svg class="icon-hamburger" viewBox="0 0 24 24" width="50" height="50">
+                <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" />
+            </svg>
+            <svg class="icon-close" viewBox="0 0 24 24" width="50" height="50">
+                <path d="M6 6l12 12M6 18L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+        </button>
         <nav>
             <ul class="topnav">
                 <li><a href="/">Hem</a></li>
@@ -27,7 +37,51 @@
         </nav>
     </header>
     <main>
-        <h1>Hejsan Sass</h1>
+        <article>
+            <h1>Sass</h1>
+            <p class="ingress">
+                På den här sidan har jag testat att använda Sass eller scss för första gången.
+                Det har varit ok.</p>
+            <p>
+                Eftersom jag inte är särskilt god vän med css från grunden så har det varit ganska tufft för mig att
+                komma igång med Sass. Det är svårt att felsöka i css och ibland känns det som att enda vägen för att få
+                till sidan som man vill är att testa sig fram. Css är för mig fortfarande någon form av svart låda i
+                vissa fall. Så när man då ska addera nya funktioner och dessutom dela upp stylingen i flera dokument och
+                alltså börja tänkta struktur och länkningar blir det lite övermäktigt.
+            </p>
+            <p>
+                Jag kan dock förstå fördelarna med Sass. Strukturen kan verkligen hjälpa en att hitta om det är mycket
+                kod. Och att en justering av variablerna i färgschemat kan ändra utseendet på hela sidan är ju kul- även
+                om jag tror att designarbete är en lite med seriös process i större sammanhang. Däremot kan det ju vara
+                väldigt praktiskt om man inser att man behöver justera en nyans på en text eller liknande. Kanske för
+                att den ska uppfylla kontrastkrav eller annat.
+            </p>
+            <p>
+                Mitt misstag i detta projekt var nog att jag borde planerat upplägget lite innan jag satta igång att
+                bygga sidan. Jag har behövt backa, ångra, gå fram och tillbaka. Å andra sidan är det väl så att vara
+                nybörjare. Just nu känns startsträckan ganska lång. Men någonstans måste man börja om man vill framåt.
+                Jag tror att jag bara ska tänka css som vanligt men använda fördelarna med scss när andan faller på. Och
+                verkligen variabler för färger alltid.
+            </p>
+            <p>
+                En väldigt stor nackdel som jag ser det just nu är att bilder inte hänger med om man vill göra en
+                drastisk förändring av färgschema. Kolla bara på dessa som matchar nuvarande sida så bra 😊.
+            </p>
+            <figure class="bild-grid">
+                <picture>
+                    <source srcset="/bilder/leguan.webp" type="image/webp">
+                    <img src="/bilder/leguan.jpg" width="1200" height="676"
+                        alt="Turkos leguan aom matchar sidanr origial-färgtema">
+                </picture>
+            </figure>
+            <figure class="bild-grid">
+                <picture>
+                    <source srcset="/bilder/turtle.webp" type="image/webp">
+                    <img src="/bilder/turtle.jpg" width="1200" height="676"
+                        alt="Brun sköldpadda med turkos bakgrund som matchar sidanr origial-färgtema">
+                </picture>
+            </figure>
+        </article>
     </main>
     <footer>
         <p>© joha2102@student.miun.se</p>
