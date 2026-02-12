@@ -18,6 +18,16 @@ $lightTheme: false;
     background-color:$primary-dark-color;
     color: $primary-light-color;
   }
+
+  @media (prefers-color-scheme: dark) {
+    background-color: $primary-dark-color;
+    color: $primary-light-color;
+  }
+
+  @media (prefers-color-scheme: light) {
+    background-color: $primary-light-color;
+    color: $primary-dark-color;
+  }
 }
 
 body {

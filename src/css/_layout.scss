@@ -12,6 +12,16 @@
     background-color: color.scale(base.$primary-dark-color, $lightness: -20%);
     color: base.$primary-light-color;
   }
+
+  @media (prefers-color-scheme: dark) {
+    background-color: color.scale(base.$primary-dark-color, $lightness: -20%);
+    color: base.$primary-light-color;
+  }
+
+  @media (prefers-color-scheme: light) {
+    background-color: base.$primary-dark-color;
+    color: base.$primary-light-color;
+  }
 }
 
 %lightOrDarkNav {
@@ -21,6 +31,14 @@
 
   @else {
     background-color: base.$primary-dark-color;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    background-color: base.$primary-dark-color;
+  }
+
+  @media (prefers-color-scheme: light) {
+    background-color: base.$primary-light-color;
   }
 }
 
@@ -175,53 +193,67 @@ article {
   }
 
   a:visited {
-    color: base.$primary-light-color;
-  }
-}
+    @if base.$lightTheme {
+      color: base.$primary-dark-color;
+    }
 
-.ingress {
-  font-weight: 600;
-  padding-bottom: 1rem;
-}
+    @else {
+      color: base.$primary-light-color;
+    }
 
-.bild-grid {
-  display: block;
+    @media (prefers-color-scheme: dark) {
+      color: base.$primary-light-color;
+    }
 
-  figure {
-    margin-bottom: 2rem;
-  }
-
-  img {
-    width: 100%;
-    height: auto;
-    display: block
+    @media (prefers-color-scheme: light) {
+      color: base.$primary-dark-color;
+    }
   }
 
-  @media (min-width: 769px) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+  .ingress {
+    font-weight: 600;
+    padding-bottom: 1rem;
+  }
+
+  .bild-grid {
+    display: block;
+
+    figure {
+      margin-bottom: 2rem;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block
+    }
+
+    @media (min-width: 769px) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
   }
 }
 
 footer {
-  @extend %lightOrDarkHeaderFoot;
+    @extend %lightOrDarkHeaderFoot;
 
-  text-align: center;
-  padding: 2rem;
-}
+    text-align: center;
+    padding: 2rem;
+  }
 
-html,
-body {
-  height: 100%;
-}
+  html,
+  body {
+    height: 100%;
+  }
 
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
 
-main {
-  flex: 1;
-}
+  main {
+    flex: 1;
+  }
