@@ -4,32 +4,74 @@
 
 header {
     a {
-    position: relative; /*Så att jag kan placera ::after i förhållande till länken*/
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: 600;
-    @include components.link-text;
+        position: relative;
+        /*Så att jag kan placera ::after i förhållande till länken*/
+        text-decoration: none;
+        font-size: 1.2rem;
+        font-weight: 600;
+        @include components.link-text;
 
-    /*Skapa pseudoelement efter länken;*/
-    &::after {
-      content: ""; /*så att elementet ska synas*/
-      position: absolute; /*i förhållande till a, som vi satte till relative*/
-      left: 0; /*placera elementet mot vänster*/
-      bottom: -6px; /*placering*/
-      width: 100%;
-      height: 3px;
-      background: currentColor;
-      transform: scaleX(0); /*skalar bredden till 0 så att den inte syns*/
-      transform-origin: left; /*skalar från vänsterkanten*/
-      transition: transform 0.3s ease; /*övergången pågår 0.3 sek, börjar långsamt*/
+        /*Skapa pseudoelement efter länken;*/
+        &::after {
+            content: "";
+            /*så att elementet ska synas*/
+            position: absolute;
+            /*i förhållande till a, som vi satte till relative*/
+            left: 0;
+            /*placera elementet mot vänster*/
+            bottom: -6px;
+            /*placering*/
+            width: 100%;
+            height: 3px;
+            background: currentColor;
+            transform: scaleX(0);
+            /*skalar bredden till 0 så att den inte syns*/
+            transform-origin: left;
+            /*skalar från vänsterkanten*/
+            transition: transform 0.3s ease;
+            /*övergången pågår 0.3 sek, börjar långsamt*/
+        }
+
+        &:hover::after {
+            transform: scaleX(1);
+            /*linjen skalas upp till full bredd*/
+        }
+
+        &[aria-current="page"]::after {
+            transform: scaleX(1);
+            /*återanvänder stilen från hover-animationen för aktiv sida*/
+        }
     }
 
-    &:hover::after {
-      transform: scaleX(1); /*linjen skalas upp till full bredd*/
+    .hamburger {
+        color: base.$primary-light-color;
+
+        .icon-hamburger,
+        .icon-close {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .icon-hamburger {
+            transform: rotate(0);
+            opacity: 1;
+        }
+
+        .icon-close {
+            transform: rotate(-90deg);
+            opacity: 0;
+        }
+
+        &.active {
+
+            .icon-hamburger {
+                transform: rotate(90deg);
+                opacity: 0;
+            }
+
+            .icon-close {
+                transform: rotate(0);
+                opacity: 1;
+            }
+        }
     }
-    
-    &[aria-current="page"]::after {
-        transform: scaleX(1); /*återanvänder stilen från hover-animationen för aktiv sida*/
-    }
-  }
 }

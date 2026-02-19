@@ -75,26 +75,21 @@ header {
   }
 
   .hamburger {
+    position: relative;
+    width: 50px;
+    height: 50px;
+
     background: none;
     border: none;
-    color: base.$primary-light-color;
     cursor: pointer;
     padding: 0;
-    display: flex;
-    align-items: center;
 
+
+    .icon-hamburger,
     .icon-close {
-      display: none;
-    }
-
-    &.active {
-      .icon-hamburger {
-        display: none;
-      }
-
-      .icon-close {
-        display: block;
-      }
+      position: absolute;
+      top: 0;
+      left: 0;
     }
   }
 }
@@ -223,23 +218,23 @@ article {
 }
 
 footer {
-    @extend %lightOrDarkHeaderFoot;
+  @extend %lightOrDarkHeaderFoot;
 
-    text-align: center;
-    padding: 2rem;
-  }
+  text-align: center;
+  padding: 2rem;
+}
 
-  html,
-  body {
-    height: 100%;
-  }
+html,
+body {
+  height: 100%;
+}
 
-  body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
-  main {
-    flex: 1;
-  }
+main {
+  flex: 1;
+}
