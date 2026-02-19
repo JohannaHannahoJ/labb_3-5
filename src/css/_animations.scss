@@ -75,3 +75,15 @@ header {
         }
     }
 }
+
+@keyframes flytta {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(80px, -40px); }
+  50%  { transform: translate(-60px, 60px); }
+  75%  { transform: translate(40px, 20px); }
+  100% { transform: translate(0, 0); }
+}
+
+.spel-knapp:hover {
+  animation: flytta 0.4s linear infinite;
+}

@@ -7,3 +7,10 @@ hamburger.addEventListener("click", () => {
   const expanded = hamburger.classList.contains("active");
   hamburger.setAttribute("aria-expanded", expanded);
 });
+
+const spelKnapp = document.querySelector(".spel-knapp");
+const resultat = document.querySelector(".resultat");
+
+spelKnapp.addEventListener("click", () => {
+  resultat.textContent = "Du klarade det. Bra gjort!";
+});

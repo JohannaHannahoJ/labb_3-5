@@ -153,7 +153,8 @@ header {
 
 }
 
-article {
+article,
+section {
   padding: 2rem;
   max-width: 75ch;
   margin: 0 auto;
@@ -191,7 +192,8 @@ article {
     }
   }
 
-  .ingress {
+  .ingress,
+  .resultat {
     font-weight: 600;
     padding-bottom: 1rem;
   }
@@ -215,6 +217,13 @@ article {
       gap: 1rem;
     }
   }
+}
+
+.spelplan {
+  position: relative;
+  height: 30vh;
+  margin-top: 2rem;
+  overflow: hidden;
 }
 
 footer {
