@@ -1,46 +1,96 @@
 
+document.addEventListener("DOMContentLoaded", () => {
+    /**
+     * Hämtar in JSON-data och skapar ett stapel- och ett cirkeldiagram.
+     */
+    fetch('https://mallarmiun.github.io/Frontend-baserad-webbutveckling/Moment%205%20-%20Dynamiska%20webbplatser/statistik_sokande_ht25.json')
 
-const stapelOptions = {
-    chart: {
-        type: 'bar'
-    },
-    series: [{
-        data: [{
-            x: 'Kurs 1',
-            y: 70
-        }, {
-            x: 'Kurs 2',
-            y: 500
-        }, {
-            x: 'Kurs3',
-            y: 300
-        }, {
-            x: 'Kurs4',
-            y: 30
-        }, {
-            x: 'Kurs5',
-            y: 55
-        }, {
-            x: 'Kurs6',
-            y: 80
-        }]
-    }]
-}
+        .then(response => {
+            /**
+             * Kontrollerar att HTTP-svaret är OK (200–299).
+             * @throws {Error} - Om anropet misslyckas.
+             */
+            if (!response.ok) {
+                throw new Error('Något gick fel: ' + response.status);
+            }
+            /** 
+             * Konvertera svar till JSON och returnera det
+            */
+            return response.json();
+        })
 
-const stapelEl = new ApexCharts(document.querySelector("#stapel"), stapelOptions);
+        .then(data => {
+            /** 
+             * Filtrerar kurserna, sorterar dem i popularitetsordning 
+             * och spar de sex kurserna som har flest sökande
+             * @type {{x: string, y: number}[]} - array som innehåller kurs och antalet sökande
+             */
+            const kurser = data
+                .filter(item => item.type === 'Kurs')
+                .sort((a, b) => b.applicantsTotal - a.applicantsTotal)
+                .slice(0, 6)
+                .map(kurs => ({
 
-stapelEl.render();
+                    x: kurs.name,
+                    y: kurs.applicantsTotal
 
-const cirkelOptions = {
-    chart: {
-        type: 'pie'
+                }))
 
-    },
-    
-    series: [44, 55, 13, 33],
-    labels: ['Apple', 'Mango', 'Orange', 'Watermelon']
-}
 
-const cirkelEl = new ApexCharts(document.querySelector("#cirkel"), cirkelOptions);
+            /**
+             * Filtrerar programmen, sorterar dem i popularitetsordning 
+             * och spar de fem som har flest sökande
+             */
+            const program = data
+                .filter(item => item.type === 'Program')
+                .sort((a, b) => b.applicantsTotal - a.applicantsTotal)
+                .slice(0, 5);
 
-cirkelEl.render();
+            /**
+             * @type {number[]} - array med antalet sökande
+             */
+            const series = program.map(p => parseInt(p.applicantsTotal));
+            
+            /**
+             * @type {string[]} - array med programnamn
+             */
+            const labels = program.map(p => p.name);
+
+            /**
+             * Stapeldiagram, apexcharts
+             */
+            const stapelOptions = {
+                title: { text: 'De mest sökta kurserna på Mittuniversitetet HT-25' },
+                chart: {
+                    type: 'bar',
+                    height: 350
+                },
+                series: [{
+                    data: kurser,
+                }]
+            }
+
+            const stapelEl = new ApexCharts(document.querySelector("#stapel"), stapelOptions);
+            stapelEl.render();
+
+             /**
+             * Cirkeldiagram, apexcharts
+             */
+            const cirkelOptions = {
+                chart: {
+                    type: 'pie',
+                    height: 350
+                },
+
+                series: series,
+                labels: labels,
+                title: { text: 'De mest sökta programmen på Mittuniversitetet HT-25' }
+            }
+
+            console.log(series);
+
+            const cirkelEl = new ApexCharts(document.querySelector("#cirkel"), cirkelOptions);
+            cirkelEl.render();
+
+        })
+});
