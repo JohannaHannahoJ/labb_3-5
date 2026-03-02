@@ -12,7 +12,6 @@ const nav = document.querySelector("nav");
 if (hamburger && nav) {
   /**
    * Lyssnar efter klick på hamburgermeny-knapp
-   * 
    */
   hamburger.addEventListener("click", () => {
     nav.classList.toggle("active");

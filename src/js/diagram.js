@@ -1,4 +1,5 @@
 
+
 document.addEventListener("DOMContentLoaded", () => {
     /**
      * Hämtar in JSON-data och skapar ett stapel- och ett cirkeldiagram.
@@ -7,14 +8,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         .then(response => {
             /**
-             * Kontrollerar att HTTP-svaret är OK (200–299).
-             * @throws {Error} - Om anropet misslyckas.
+             * Kontrollerar att HTTP-svaret är OK.
+             * @throws {Error} om inte ok
              */
             if (!response.ok) {
                 throw new Error('Något gick fel: ' + response.status);
             }
             /** 
-             * Konvertera svar till JSON och returnera det
+             * @returns {object[]} JSON-data
             */
             return response.json();
         })
@@ -22,8 +23,10 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(data => {
             /** 
              * Filtrerar kurserna, sorterar dem i popularitetsordning 
-             * och spar de sex kurserna som har flest sökande
-             * @type {{x: string, y: number}[]} - array som innehåller kurs och antalet sökande
+             * och spar de sex kurserna som har flest sökande i en array
+             * x: kursens namn
+             * y: antal sökande
+             * @type {object[]}
              */
             const kurser = data
                 .filter(item => item.type === 'Kurs')
@@ -40,6 +43,9 @@ document.addEventListener("DOMContentLoaded", () => {
             /**
              * Filtrerar programmen, sorterar dem i popularitetsordning 
              * och spar de fem som har flest sökande
+             * name: program
+             * applicantsTotal: antal sökande
+             * @type {object[]}
              */
             const program = data
                 .filter(item => item.type === 'Program')
@@ -47,12 +53,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 .slice(0, 5);
 
             /**
-             * @type {number[]} - array med antalet sökande
+             * array med antalet sökande
+             * @type {number[]}
              */
             const series = program.map(p => parseInt(p.applicantsTotal));
-            
+
             /**
-             * @type {string[]} - array med programnamn
+             * array med programnamn
+             * @type {string[]}
              */
             const labels = program.map(p => p.name);
 
@@ -73,9 +81,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const stapelEl = new ApexCharts(document.querySelector("#stapel"), stapelOptions);
             stapelEl.render();
 
-             /**
-             * Cirkeldiagram, apexcharts
-             */
+            /**
+            * Cirkeldiagram, apexcharts
+            */
             const cirkelOptions = {
                 chart: {
                     type: 'pie',
