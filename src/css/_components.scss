@@ -90,7 +90,7 @@
 #map {
   height: 350px;
   max-height: 500px;
-  border: 1px solid base.$primary-dark-color;
+  border: 1px solid #{base.$primary-dark-color};
   border-radius: 16px;
 
 }
@@ -104,13 +104,13 @@
 
 .sökruta {
   width: 100%;
-  background-color: base.$primary-light-color;
-  border: 1px solid base.$primary-dark-color;
+  background-color: #{base.$primary-light-color};
+  border:  1px solid #{base.$primary-dark-color};
   border-radius: 8px;
   padding: 0.5rem;
 
   &::placeholder {
-    color: base.$primary-dark-color;
+    color: #{base.$primary-dark-color};
     font-style: italic;
   }
 }
