@@ -2,36 +2,37 @@
 @use "sass:color";
 
 @mixin link-text {
-    @if base.$lightTheme {
-        color: base.$primary-pop-color;
+  @if base.$lightTheme {
+    color: base.$primary-pop-color;
 
-        &:hover {
-            color: color.complement(base.$primary-pop-color);
-        }
+    &:hover {
+      color: color.complement(base.$primary-pop-color);
     }
+  }
 
-    @else {
-        color: color.scale(base.$primary-pop-color, $lightness: 55%);
-        &:hover {
-            color: color.scale(base.$primary-pop-color, $lightness: 85%);
-        }
+  @else {
+    color: color.scale(base.$primary-pop-color, $lightness: 55%);
+
+    &:hover {
+      color: color.scale(base.$primary-pop-color, $lightness: 85%);
     }
+  }
 
-    @media (prefers-color-scheme: dark) {
-        color: color.scale(base.$primary-pop-color, $lightness: 55%);
-        
-        &:hover {
-            color: color.scale(base.$primary-pop-color, $lightness: 85%);
-        }
+  @media (prefers-color-scheme: dark) {
+    color: color.scale(base.$primary-pop-color, $lightness: 55%);
+
+    &:hover {
+      color: color.scale(base.$primary-pop-color, $lightness: 85%);
     }
+  }
 
-    @media (prefers-color-scheme: light) {
-        color: base.$primary-pop-color;
+  @media (prefers-color-scheme: light) {
+    color: base.$primary-pop-color;
 
-        &:hover {
-            color: color.complement(base.$primary-pop-color);
-        }
+    &:hover {
+      color: color.complement(base.$primary-pop-color);
     }
+  }
 }
 
 @mixin button {
@@ -80,6 +81,43 @@
   transform: translate(-50%, -50%);
   z-index: 100;
   padding: 1rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#map {
+  height: 350px;
+  max-height: 500px;
+  border: 1px solid #{base.$primary-dark-color};
+  border-radius: 16px;
+
+}
+
+#sökfunktion {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.sökruta {
+  width: 100%;
+  background-color: #{base.$primary-light-color};
+  border:  1px solid #{base.$primary-dark-color};
+  border-radius: 8px;
+  padding: 0.5rem;
+
+  &::placeholder {
+    color: #{base.$primary-dark-color};
+    font-style: italic;
+  }
+}
+
+.sökknapp {
+  @include button;
+  padding: 0.5rem;
   border: none;
   border-radius: 8px;
   font-weight: 600;
