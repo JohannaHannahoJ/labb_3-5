@@ -226,6 +226,10 @@ section {
   overflow: hidden;
 }
 
+.diagram-container {
+  padding: 1rem;
+}
+
 footer {
   @extend %lightOrDarkHeaderFoot;
 
