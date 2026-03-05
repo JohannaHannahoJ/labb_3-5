@@ -1,7 +1,7 @@
 /**
  * Hämtar in JSON-data och skapar ett stapel- och ett cirkeldiagram med apexcharts.
  * @asynk
- * @returns {Promise<Object[]>}
+ * @returns {void}
  */
 
 async function loadData() {
